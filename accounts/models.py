@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import PermissionsMixin
 from django.contrib.auth.base_user import BaseUserManager, AbstractBaseUser
+from django.db.models.deletion import CASCADE
 from django.utils.translation import ugettext_lazy as _
 from django.core.validators import RegexValidator
 import uuid
@@ -67,6 +68,8 @@ class User(AbstractBaseUser, PermissionsMixin):
         '''
         send_mail(subject, message, from_email, [self.email], **kwargs)
         
-        
+    class institution(models.Model):
+        User=models.OneToOneField (on_delete=CASCADE)
+        institution=models.CharField(max_length=254)
     
     
