@@ -9,7 +9,7 @@
 * [Status](#Status)
 
 ## Description
-This is an online logbook that allows students (SWIESS interns) to take record of day to day activites in their various locations all over the world.
+This is an online logbook that allows students (SIWES interns) to take record of day to day activites in their various locations all over the world.
 The aim of the project is to allow interns to access their logbook anytime and anywhere.
 It also helps incases of loss or theft the physical logbook.
 
