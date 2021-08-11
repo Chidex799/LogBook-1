@@ -76,3 +76,13 @@ class UniversitySupervisor(models.Model):
     user=models.OneToOneField(User, on_delete=models.CASCADE)
     university=models.CharField(max_length=254)
     department = models.CharField(max_length=254)
+
+class Students(models.Model):
+    user = models.OneToOneField(User,on_delete=models.CASCADE)
+    matricNum = models.CharField(max_length=150, null=False)
+    InstitutionSupervisor = models.OneToOneField(InstitutionSupervisor, on_delete= models.CASCADE)
+    universityInspec = models.OneToOneField(UniversitySupervisor, on_delete= models.CASCADE)
+    department = models.CharField(max_length=250, null=False)
+    regdate = models.DateTimeField(auto_now_add=True)
+    duration = models.IntegerField()
+
