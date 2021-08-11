@@ -68,8 +68,11 @@ class User(AbstractBaseUser, PermissionsMixin):
         '''
         send_mail(subject, message, from_email, [self.email], **kwargs)
         
-    class institution(models.Model):
-        User=models.OneToOneField (on_delete=CASCADE)
-        institution=models.CharField(max_length=254)
+class institutionSupervisor(models.Model):
+    user=models.OneToOneField(User, on_delete=models.CASCADE)
+    institution=models.CharField(max_length=254)
     
-    
+class universitySupervisor(models.Model):
+    user=models.OneToOneField(User, on_delete=models.CASCADE)
+    university=models.CharField(max_length=254)
+    department = models.CharField(max_length=254)
