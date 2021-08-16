@@ -76,3 +76,4 @@ class UniversitySupervisor(models.Model):
     user=models.OneToOneField(User, on_delete=models.CASCADE)
     university=models.CharField(max_length=254)
     department = models.CharField(max_length=254)
+
