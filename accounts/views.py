@@ -1,14 +1,15 @@
 from django.shortcuts import render
-from .serializers import UserSerializer
+from .serializers import UserSerializer, StudentsSerializer
 from rest_framework import serializers, status
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from .models import User
-
+from rest_framework import viewsets
+from .models import Students
+from rest_framework.permissions import IsAuthenticated, AllowAny
 # Create your views here.
 
 class CreateUser(APIView):
-
     def get(self, request, format=None):
         get_data = User.objects.all()
         get_data_json = UserSerializer(get_data, many=True)
@@ -21,3 +22,8 @@ class CreateUser(APIView):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status= status.HTTP_400_BAD_REQUEST)
+    
+class StudentView(viewsets.ModelViewSet):
+    queryset = Students.objects.all()
+    serializer_class = StudentsSerializer
+    permission_classes = [AllowAny]
