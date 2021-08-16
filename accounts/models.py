@@ -80,8 +80,8 @@ class UniversitySupervisor(models.Model):
 class Students(models.Model):
     user = models.OneToOneField(User,on_delete=models.CASCADE)
     matricNum = models.CharField(max_length=150, null=False)
-    InstitutionSupervisor = models.OneToOneField(InstitutionSupervisor, on_delete= models.CASCADE)
-    universityInspec = models.OneToOneField(UniversitySupervisor, on_delete= models.CASCADE)
+    InstitutionSupervisor = models.OneToOneField(InstitutionSupervisor, on_delete= models.CASCADE, null= True, blank = True)
+    universityInspec = models.OneToOneField(UniversitySupervisor, on_delete= models.CASCADE, null = True, blank = True)
     department = models.CharField(max_length=250, null=False)
     regdate = models.DateTimeField(auto_now_add=True)
     duration = models.IntegerField()
