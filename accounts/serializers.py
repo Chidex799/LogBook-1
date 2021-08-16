@@ -1,5 +1,10 @@
+from django.db import models
+from django.db.models import fields
 from rest_framework import serializers
-from .models import User,InstitutionSupervisor,UniversitySupervisor,Students
+
+from .models import InstitutionSupervisor, User, Students
+
+
 
 class UserSerializer(serializers.ModelSerializer):
     password = serializers.CharField(
@@ -10,6 +15,7 @@ class UserSerializer(serializers.ModelSerializer):
         model = User
         fields = ['id', 'email', 'uuid', 'first_name', 'last_name', 'phone_number', 'password']
   
+
 
 class StudentsSerializer(serializers.ModelSerializer):
     password = serializers.CharField(

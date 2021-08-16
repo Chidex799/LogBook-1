@@ -85,4 +85,3 @@ class Students(models.Model):
     department = models.CharField(max_length=250, null=False)
     regdate = models.DateTimeField(auto_now_add=True)
     duration = models.IntegerField()
-
