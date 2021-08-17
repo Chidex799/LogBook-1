@@ -22,13 +22,20 @@ class CreateUser(APIView):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status= status.HTTP_400_BAD_REQUEST)
+
+
+
+
+
     
 class StudentView(viewsets.ModelViewSet):
     queryset = Students.objects.all()
     serializer_class = StudentsSerializer
     permission_classes = [AllowAny]
 
+
 class InstitutionSupervisorView(viewsets.ModelViewSet):
     queryset = InstitutionSupervisor.objects.all()
     serializer_class = InstitutionSupervisorSerializer
     permission_class = [AllowAny]
+
