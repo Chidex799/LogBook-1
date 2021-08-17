@@ -3,6 +3,7 @@ from rest_framework.response import Response
 from .models import Entry
 from .serializers import EntrySerializer
 from rest_framework import status
+from django.shortcuts import  get_object_or_404
 
 
 class CreateEntry(APIView):
@@ -19,9 +20,8 @@ class CreateEntry(APIView):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status= status.HTTP_400_BAD_REQUEST)
 
-    def __del__(self, request, format=None):
-        serializer = EntrySerializer(data=request.data)
-
-        if serializer.is_valid():
-            serializer.delete()
-            return Response(serializer.data, status=status.HTTP_404_NOT_FOUND)
+    def delete(self, request, id, format=None):
+        print(id)
+        post = get_object_or_404(Entry, id=id)
+        post.delete()
+        return Response({"Status": "Deleted post"}, status=status.HTTP_200_OK)
