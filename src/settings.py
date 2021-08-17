@@ -40,6 +40,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'cloudinary',
+<<<<<<< HEAD
+    'logbook.apps.LogbookConfig',
+=======
+>>>>>>> 8e498edde9259debd2c44d2a0e19bab159910f91
     'accounts.apps.AccountsConfig',
     'logbook.apps.LogbookConfig',
 ]
