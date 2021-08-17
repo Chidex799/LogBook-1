@@ -39,7 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'cloudinary',
     'accounts.apps.AccountsConfig',
+    'logbook.apps.LogbookConfig',
 ]
 
 MIDDLEWARE = [
