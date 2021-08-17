@@ -7,5 +7,5 @@ class Entry(models.Model):
     dateTime = models.DateTimeField(auto_now_add=True)
     description=models.TextField()
     image=models.ImageField()
-    studentID=models.ForeignKey(Students, on_delete=models.CASCADE)
+    student=models.ForeignKey(Students, on_delete=models.CASCADE)
     remarks=models.TextField()
