@@ -5,7 +5,7 @@ from rest_framework import routers
 
 router = routers.DefaultRouter()
 router.register("students",StudentView, basename="students")
-router.register("universitysupervisor",UniversitySupervisorView, basename="university supervisor")
-router.register("InstitutionSupervisor",InstitutionSupervisorView, basename="InstitutionSupervisor")
+router.register("university/supervisor",UniversitySupervisorView, basename="university supervisor")
+router.register("institution/supervisor",InstitutionSupervisorView, basename="InstitutionSupervisor")
 
 urlpatterns =  router.urls
