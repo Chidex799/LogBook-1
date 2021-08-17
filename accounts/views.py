@@ -1,11 +1,11 @@
 from django.shortcuts import render
-from .serializers import UserSerializer, StudentsSerializer
+from .serializers import UserSerializer, StudentsSerializer, InstitutionSupervisorSerializer
 from rest_framework import serializers, status
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from .models import User
 from rest_framework import viewsets
-from .models import Students
+from .models import Students, InstitutionSupervisor
 from rest_framework.permissions import IsAuthenticated, AllowAny
 # Create your views here.
 
@@ -32,4 +32,10 @@ class StudentView(viewsets.ModelViewSet):
     queryset = Students.objects.all()
     serializer_class = StudentsSerializer
     permission_classes = [AllowAny]
+
+
+class InstitutionSupervisorView(viewsets.ModelViewSet):
+    queryset = InstitutionSupervisor.objects.all()
+    serializer_class = InstitutionSupervisorSerializer
+    permission_class = [AllowAny]
 
