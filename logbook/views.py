@@ -1,8 +1,11 @@
-from rest_framework.views import APIView
-from rest_framework.response import Response
-from .models import Entry
+from django.shortcuts import render
 from .serializers import EntrySerializer
+from rest_framework.response import Response
+from rest_framework.views import APIView
+from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework import status
+from .models import Entry
+
 from django.shortcuts import  get_object_or_404
 
 
@@ -19,7 +22,7 @@ class CreateEntry(APIView):
 
         if serializer.is_valid():
             serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
+            return Response(serializer.data)
         return Response(serializer.errors, status= status.HTTP_400_BAD_REQUEST)
 
     def delete(self, request, id, format=None):
@@ -27,3 +30,13 @@ class CreateEntry(APIView):
         post = get_object_or_404(Entry, id=id)
         post.delete()
         return Response({"Status": "Deleted post"}, status=status.HTTP_200_OK)
+
+class SpecificEntry(APIView):
+    def put(self, request, id, format= None):
+        serializer = EntrySerializer(Entry, id=id)
+        
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        
