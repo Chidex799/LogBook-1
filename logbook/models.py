@@ -4,14 +4,11 @@ from accounts.models import Students
 class Entry(models.Model):
     weekNumber=models.IntegerField(blank = False, null = False)
     dateTime = models.DateTimeField(auto_now_add=True)
-
-    description=models.TextField()
-    image=models.ImageField()
-    student=models.ForeignKey(Students, on_delete=models.CASCADE)
-    remarks=models.TextField()
-
     description=models.TextField(blank = False, null = False)
     image=models.URLField(blank = True, null= True)
     student=models.ForeignKey(Students, on_delete=models.CASCADE)
     remarks=models.TextField(blank = True, null = True)
+    
+    def __str__(self):
+        return str(self.weekNumber)
 

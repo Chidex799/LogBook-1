@@ -72,12 +72,16 @@ class InstitutionSupervisor(models.Model):
     user=models.OneToOneField(User, on_delete=models.CASCADE)
     institution=models.CharField(max_length=254)
     
+    def __str__(self):
+        return self.user.email
+
 class UniversitySupervisor(models.Model):
     user=models.OneToOneField(User, on_delete=models.CASCADE)
     university=models.CharField(max_length=254)
     department = models.CharField(max_length=254)
 
-
+    def __str__(self):
+        return self.user.email
 
 
 class Students(models.Model):
@@ -88,4 +92,7 @@ class Students(models.Model):
     department = models.CharField(max_length=250, null=False)
     regdate = models.DateTimeField(auto_now_add=True)
     duration = models.IntegerField()
+    
+    def __str__(self):
+        return self.user.email
 

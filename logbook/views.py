@@ -7,9 +7,11 @@ from django.shortcuts import  get_object_or_404
 
 
 class CreateEntry(APIView):
+    serializer_class = EntrySerializer
+    
     def get(self, request, format=None):
         get_data = Entry.objects.all()
-        get_data_json = EntrySerializer(get_data, many=True)
+        get_data_json = self.serializer_class(get_data, many=True)
         return Response(get_data_json.data, status=status.HTTP_200_OK)
 
     def post(self, request, format=None):
