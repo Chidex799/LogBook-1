@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'cloudinary',
     'accounts.apps.AccountsConfig',
     'logbook.apps.LogbookConfig',
+    'knox',
+    'rest_framework.authtoken'
 ]
 
 MIDDLEWARE = [
@@ -74,7 +76,17 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'src.wsgi.application'
 
-
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        # 'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
+        
+    ],
+    
+    'DEFAULT_PERMISSION_CLASSES':[
+        'rest_framework.permissions.AllowAny'
+    ]
+}
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
