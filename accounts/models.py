@@ -67,22 +67,39 @@ class User(AbstractBaseUser, PermissionsMixin):
         Sends an email to this User.
         '''
         send_mail(subject, message, from_email, [self.email], **kwargs)
+      
         
 class InstitutionSupervisor(models.Model):
     user=models.OneToOneField(User, on_delete=models.CASCADE)
     institution=models.CharField(max_length=254)
     
+    def __str__(self):
+        return self.user.email
+
 class UniversitySupervisor(models.Model):
     user=models.OneToOneField(User, on_delete=models.CASCADE)
-    university=models.CharField(max_length=254)
+    #  universiity (foreign  key ): handled by someone
     department = models.CharField(max_length=254)
+
+    def __str__(self):
+        return self.user.email
+
 
 class Students(models.Model):
     user = models.OneToOneField(User,on_delete=models.CASCADE)
     matricNum = models.CharField(max_length=150, null=False)
-    InstitutionSupervisor = models.OneToOneField(InstitutionSupervisor, on_delete= models.CASCADE)
-    universityInspec = models.OneToOneField(UniversitySupervisor, on_delete= models.CASCADE)
+    InstitutionSupervisor = models.OneToOneField(InstitutionSupervisor, on_delete= models.CASCADE, null= True, blank = True)
+    universityInspec = models.OneToOneField(UniversitySupervisor, on_delete= models.CASCADE, null = True, blank = True)
     department = models.CharField(max_length=250, null=False)
     regdate = models.DateTimeField(auto_now_add=True)
     duration = models.IntegerField()
+    # universiity (foreign  key ): handled by someone
+    
+    def __str__(self):
+        return self.user.email
+    
+class Universities(models.Model):
+    pass
+    #to be done by someone
+
 
