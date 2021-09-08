@@ -8,6 +8,28 @@ import uuid
 from django.core.mail import send_mail
 # Create your models here.
 
+UNIVERSITIES_CHOICES = [
+    ('ABSU', 'Abia State University'),
+    ('AUO', 'Achievers University'),
+    ('ADSU', 'Adamawa State University'),
+    ('AAUA', 'Adekunle Ajasin University'),
+    ('AU', 'Adeleke University'),
+    ('ADUN', 'Admiralty University of Nigeria'),
+    ('ABUAD', 'Afe Babalola University'),
+    ('AUST', 'African Univeristy of Science and Technology'),
+    ('ABUZARIA', 'Ahmadu Bello University'),
+    ('ACU', 'Ajayi Crowther University'),
+    ('AKSU', 'Akwa Ibom State University'),
+    ('FUNAI', 'Alex Ekwueme Federal University, Ndufu-Alike'),
+    ('HUI', 'Al-Hikmah University'),
+    ('AUK', 'Al-Qalam University, Katsina'),
+    ('AAU', 'Ambrose Ali University'),
+    ('AUN', 'American University of Nigeria'),
+    ('AUL', 'Anchor University, Lagos'),
+    ('AJU', 'Arthur Jarvis University'),
+    ('')
+]
+
 class UserManager(BaseUserManager):
 
     def create_user(self, email, password, **extra_fields):
